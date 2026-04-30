@@ -295,9 +295,9 @@ footer{background:var(--text);color:#f8f7f4;padding:40px 32px;margin-top:60px;}
         </div>
       </div>
       <img class="hero-product-img"
-        src="https://images-na.ssl-images-amazon.com/images/I/61o3oeXME9L._SL500_.jpg"
+        src="https://wsrv.nl/?url=images-na.ssl-images-amazon.com/images/P/B09XS7JWHH.01._SL400_.jpg&w=400&h=400&fit=contain&bg=white"
         alt="Sony WH-1000XM5"
-        onerror="this.src='https://m.media-amazon.com/images/I/61o3oeXME9L._SL500_.jpg'">
+        onerror="this.style.opacity='0.3'">
     </div>
     <div class="hero-side">
       <div class="hero-card-sm" onclick="showPage('audio')">
@@ -323,7 +323,7 @@ footer{background:var(--text);color:#f8f7f4;padding:40px 32px;margin-top:60px;}
       <!-- Sony XM5 -->
       <div class="product-card" onclick="showPage('audio')">
         <div class="product-img-wrap">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/61o3oeXME9L._SL500_.jpg" alt="Sony WH-1000XM5"
+          <img src="https://wsrv.nl/?url=images-na.ssl-images-amazon.com/images/P/B09XS7JWHH.01._SL400_.jpg&w=400&h=400&fit=contain&bg=white" alt="Sony WH-1000XM5"
             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
           <span class="fallback-emoji">🎧</span>
           <span class="product-badge badge-top">TOP 1</span>
@@ -344,7 +344,7 @@ footer{background:var(--text);color:#f8f7f4;padding:40px 32px;margin-top:60px;}
       <!-- MacBook Air M3 -->
       <div class="product-card" onclick="showPage('portatiles')">
         <div class="product-img-wrap">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/71vFKBpKakL._SL500_.jpg" alt="MacBook Air M3"
+          <img src="https://wsrv.nl/?url=images-na.ssl-images-amazon.com/images/P/B0CX22FVTR.01._SL400_.jpg&w=400&h=400&fit=contain&bg=white" alt="MacBook Air M3"
             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
           <span class="fallback-emoji">💻</span>
           <span class="product-badge badge-offer">-22%</span>
@@ -365,7 +365,7 @@ footer{background:var(--text);color:#f8f7f4;padding:40px 32px;margin-top:60px;}
       <!-- Samsung S25 Ultra -->
       <div class="product-card" onclick="showPage('smartphones')">
         <div class="product-img-wrap">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/71M2xJsQpJL._SL500_.jpg" alt="Samsung Galaxy S25 Ultra"
+          <img src="https://wsrv.nl/?url=images-na.ssl-images-amazon.com/images/P/B0DQNL4RGL.01._SL400_.jpg&w=400&h=400&fit=contain&bg=white" alt="Samsung Galaxy S25 Ultra"
             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
           <span class="fallback-emoji">📱</span>
           <span class="product-badge badge-new">NUEVO</span>
@@ -386,7 +386,7 @@ footer{background:var(--text);color:#f8f7f4;padding:40px 32px;margin-top:60px;}
       <!-- PS5 Slim -->
       <div class="product-card" onclick="showPage('gaming')">
         <div class="product-img-wrap">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/41SuvllKMiL._SL500_.jpg" alt="PlayStation 5 Slim"
+          <img src="https://wsrv.nl/?url=images-na.ssl-images-amazon.com/images/P/B0CL61BXSK.01._SL400_.jpg&w=400&h=400&fit=contain&bg=white" alt="PlayStation 5 Slim"
             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
           <span class="fallback-emoji">🎮</span>
         </div>
@@ -406,7 +406,7 @@ footer{background:var(--text);color:#f8f7f4;padding:40px 32px;margin-top:60px;}
       <!-- Apple Watch S10 -->
       <div class="product-card">
         <div class="product-img-wrap">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/71xFEYNdHiL._SL500_.jpg" alt="Apple Watch Series 10"
+          <img src="https://wsrv.nl/?url=images-na.ssl-images-amazon.com/images/P/B0DGJPKBFN.01._SL400_.jpg&w=400&h=400&fit=contain&bg=white" alt="Apple Watch Series 10"
             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
           <span class="fallback-emoji">⌚</span>
           <span class="product-badge badge-new">2025</span>
@@ -427,7 +427,7 @@ footer{background:var(--text);color:#f8f7f4;padding:40px 32px;margin-top:60px;}
       <!-- Sony ZV-E10 II -->
       <div class="product-card">
         <div class="product-img-wrap">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/71T5p0DRPVL._SL500_.jpg" alt="Sony ZV-E10 II"
+          <img src="https://wsrv.nl/?url=images-na.ssl-images-amazon.com/images/P/B0CZBFHMGN.01._SL400_.jpg&w=400&h=400&fit=contain&bg=white" alt="Sony ZV-E10 II"
             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
           <span class="fallback-emoji">📷</span>
         </div>
@@ -636,34 +636,17 @@ function showPage(page) {
 }
 
 // ── IMAGE HELPER ──
-// Uses multiple Amazon CDN patterns with emoji fallback
+// Uses wsrv.nl — free image proxy that bypasses Amazon CORS restrictions
 function imgTag(asin, alt, cls='') {
-  // Try multiple Amazon image URL formats
-  const urls = [
-    `https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${asin}&Format=_SL250_&ID=AsinImage&MarketPlace=ES&ServiceVersion=20070822&WS=1&tag=elmejorgadget-21`,
-    `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._SL500_.jpg`,
-    `https://m.media-amazon.com/images/P/${asin}.01._SL250_.jpg`
-  ];
-  const emoji = asin.startsWith('B09') || asin.includes('XM5') ? '🎧' :
-                asin.startsWith('B0CX') ? '💻' :
-                asin.startsWith('B0DQ') || asin.startsWith('B0CK') ? '📱' :
-                asin.startsWith('B0CL') ? '🎮' : '📦';
-  return `<img src="${urls[1]}" alt="${alt}" class="${cls}"
-    onerror="
-      if(!this._t) this._t=0;
-      this._t++;
-      const urls=${JSON.stringify([
-        'https://images-na.ssl-images-amazon.com/images/P/ASIN.01._SL500_.jpg',
-        'https://m.media-amazon.com/images/P/ASIN.01._SL250_.jpg'
-      ])};
-      if(this._t < 2) {
-        this.src = urls[this._t-1].replace('ASIN','${asin}');
-      } else {
-        this.style.display='none';
-        const fb=this.nextElementSibling;
-        if(fb) fb.style.display='flex';
-      }
-    ">`;
+  // Direct Amazon URL
+  const amazonUrl = `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._SL300_.jpg`;
+  // Proxied through wsrv.nl (no CORS, cached globally, free)
+  const proxyUrl = `https://wsrv.nl/?url=${encodeURIComponent(amazonUrl)}&w=300&h=300&fit=contain&bg=white`;
+  // Secondary proxy fallback
+  const fallbackUrl = `https://wsrv.nl/?url=${encodeURIComponent('https://m.media-amazon.com/images/P/' + asin + '.01._SL300_.jpg')}&w=300&h=300&fit=contain&bg=white`;
+  return `<img src="${proxyUrl}" alt="${alt}" class="${cls}"
+    loading="lazy"
+    onerror="if(!this._f){this._f=true;this.src='${fallbackUrl}'}else{this.style.display='none';const fb=this.nextElementSibling;if(fb)fb.style.display='flex'}">`;
 }
 
 // ── BUY BUTTONS HELPER ──
@@ -688,16 +671,29 @@ async function callClaude(prompt, statusEl, steps) {
   let i = 0;
   const iv = setInterval(() => { if (statusEl && steps[i]) statusEl.textContent = steps[i++]; }, 700);
   try {
+    // 25s timeout — Netlify functions can have cold starts
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 25000);
     const res = await fetch('/.netlify/functions/claude', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
+      body: JSON.stringify({ prompt }),
+      signal: controller.signal
     });
+    clearTimeout(timeout);
     clearInterval(iv);
-    if (!res.ok) { console.error('Function error:', res.status); return null; }
+    if (!res.ok) {
+      console.error('Function error:', res.status, await res.text());
+      return null;
+    }
     const data = await res.json();
     return data.text || null;
-  } catch(e) { clearInterval(iv); console.error('Fetch error:', e); return null; }
+  } catch(e) {
+    clearInterval(iv);
+    if (e.name === 'AbortError') console.error('Timeout: function took >25s');
+    else console.error('Fetch error:', e);
+    return null;
+  }
 }
 
 function parseJSON(raw) {
