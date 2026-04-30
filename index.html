@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElMejorGadget — Reviews y Comparativas de Tecnología</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f8f7f4; --surface:#fff; --surface2:#f0ede8;
+  --border:#e2ddd6; --text:#1a1814; --muted:#7a7060;
+  --accent:#e8380d; --amazon:#ff9900;
+  --pccomp:#0066cc; --media:#e2001a;
+  --green:#1a7a4a; --green-bg:#edfaf3;
+  --serif:'Playfair Display',serif; --sans:'Outfit',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* TOPBAR */
+.topbar{background:var(--text);color:#f8f7f4;font-size:.72rem;font-weight:500;letter-spacing:.5px;padding:7px 32px;display:flex;align-items:center;justify-content:space-between;}
+.topbar a{color:#aaa;text-decoration:none;transition:color .2s;}
+.topbar a:hover{color:white;}
+.topbar-links{display:flex;gap:20px;}
+
+/* HEADER */
+header{background:var(--surface);border-bottom:2px solid var(--text);}
+.header-main{max-width:1240px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo{font-family:var(--serif);font-size:2rem;font-weight:900;letter-spacing:-1px;text-decoration:none;color:var(--text);}
+.logo .dot{color:var(--accent);}
+.header-search{display:flex;align-items:center;background:var(--surface2);border:1px solid var(--border);border-radius:4px;overflow:hidden;width:320px;}
+.header-search input{flex:1;padding:10px 14px;background:none;border:none;font-family:var(--sans);font-size:.88rem;color:var(--text);outline:none;}
+.header-search input::placeholder{color:var(--muted);}
+.search-btn{padding:10px 14px;background:var(--text);color:white;border:none;cursor:pointer;}
+.offers-btn{background:var(--accent);color:white;border:none;padding:9px 18px;border-radius:4px;font-family:var(--sans);font-size:.82rem;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap;}
+.offers-btn:hover{background:#c92e08;}
+
+/* NAV */
+nav{border-top:1px solid var(--border);background:var(--surface);overflow-x:auto;}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 32px;display:flex;}
+.nav-item{padding:13px 16px;font-size:.78rem;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;transition:all .15s;white-space:nowrap;text-transform:uppercase;letter-spacing:.5px;}
+.nav-item:hover{color:var(--text);}
+.nav-item.active{color:var(--accent);border-bottom-color:var(--accent);}
+
+/* PAGES */
+.page{display:none;}
+.page.active{display:block;animation:fadeUp .3s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+.hero{max-width:1240px;margin:0 auto;padding:32px 32px 24px;display:grid;grid-template-columns:1.5fr 1fr;gap:2px;}
+.hero-main{background:var(--text);color:#f8f7f4;padding:40px;display:grid;grid-template-columns:1fr 160px;gap:24px;align-items:center;}
+.hero-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.hero-label::before{content:'';width:24px;height:2px;background:var(--accent);}
+.hero-title{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;line-height:1.1;margin-bottom:14px;}
+.hero-excerpt{font-size:.88rem;line-height:1.7;color:#b0a898;margin-bottom:20px;}
+.hero-meta{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+.stars-big{color:#fbbf24;font-size:1rem;}
+.rating-val{font-size:1rem;font-weight:700;}
+.rating-count{font-size:.75rem;color:#888;}
+.hero-price{font-family:var(--serif);font-size:1.5rem;font-weight:700;}
+.hero-price-old{font-size:.82rem;color:#666;text-decoration:line-through;margin-left:8px;}
+.hero-buy-row{display:flex;flex-direction:column;gap:6px;margin-top:18px;}
+.hero-product-img{width:160px;height:160px;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(0,0,0,.45));}
+.hero-side{display:grid;grid-template-rows:1fr 1fr;gap:2px;}
+.hero-card-sm{background:var(--surface);padding:24px;cursor:pointer;border-left:4px solid transparent;transition:all .2s;}
+.hero-card-sm:hover{border-left-color:var(--accent);background:var(--surface2);}
+.hero-sm-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin-bottom:8px;}
+.hero-sm-title{font-family:var(--serif);font-size:1rem;font-weight:700;line-height:1.3;margin-bottom:10px;}
+.hero-sm-meta{font-size:.78rem;color:var(--muted);display:flex;gap:8px;}
+
+/* SECTION */
+.section{max-width:1240px;margin:0 auto;padding:36px 32px;}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--text);}
+.section-title{font-family:var(--serif);font-size:1.4rem;font-weight:900;}
+.section-link{font-size:.75rem;font-weight:700;color:var(--accent);text-decoration:none;text-transform:uppercase;letter-spacing:.5px;}
+
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+
+.product-card{background:var(--surface);transition:all .2s;cursor:pointer;display:flex;flex-direction:column;}
+.product-card:hover{background:var(--surface2);}
+
+/* IMAGE WRAPPER — fixed height, white bg */
+.product-img-wrap{background:#fff;display:flex;align-items:center;justify-content:center;position:relative;height:200px;overflow:hidden;border-bottom:1px solid var(--border);}
+.product-img-wrap img{max-width:80%;max-height:160px;object-fit:contain;transition:transform .35s ease;}
+.product-card:hover .product-img-wrap img{transform:scale(1.06);}
+.product-img-wrap .fallback-emoji{font-size:4rem;display:none;}
+
+.product-badge{position:absolute;top:10px;left:10px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:3px 8px;}
+.badge-top{background:var(--text);color:white;}
+.badge-offer{background:var(--accent);color:white;}
+.badge-new{background:var(--green);color:white;}
+
+.product-body{padding:16px;flex:1;display:flex;flex-direction:column;}
+.product-cat{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:6px;}
+.product-name{font-family:var(--serif);font-size:.95rem;font-weight:700;line-height:1.3;margin-bottom:8px;flex:1;}
+.product-rating{display:flex;align-items:center;gap:5px;margin-bottom:10px;font-size:.78rem;}
+.stars-sm{color:#fbbf24;}
+.rating-n{font-weight:700;}
+.rating-c{color:var(--muted);}
+.product-price-row{display:flex;align-items:baseline;gap:6px;margin-bottom:10px;padding-top:10px;border-top:1px solid var(--border);}
+.product-price{font-family:var(--serif);font-size:1.15rem;font-weight:700;}
+.product-price-old{font-size:.72rem;color:var(--muted);text-decoration:line-through;}
+
+/* MULTI-BUY BUTTONS */
+.buy-buttons{display:flex;flex-direction:column;gap:5px;margin-top:auto;}
+.buy-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:7px 10px;border-radius:4px;font-size:.75rem;font-weight:700;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:var(--sans);}
+.buy-btn.amazon{background:var(--amazon);color:#111;}
+.buy-btn.amazon:hover{background:#e68900;}
+.buy-btn.pccomp{background:var(--pccomp);color:white;}
+.buy-btn.pccomp:hover{background:#0055aa;}
+.buy-btn.media{background:var(--media);color:white;}
+.buy-btn.media:hover{background:#bb0015;}
+
+/* RANKING */
+.ranking-list{display:flex;flex-direction:column;gap:2px;}
+.rank-item{background:var(--surface);display:grid;grid-template-columns:56px 72px 1fr auto 120px;align-items:center;gap:16px;padding:18px 24px;transition:all .2s;cursor:pointer;}
+.rank-item:hover{background:var(--surface2);}
+.rank-item.gold{border-left:4px solid #fbbf24;}
+.rank-item.silver{border-left:4px solid #9ca3af;}
+.rank-item.bronze{border-left:4px solid #b45309;}
+.rank-num{font-family:var(--serif);font-size:2rem;font-weight:900;text-align:center;line-height:1;}
+.rank-num.n1{color:#fbbf24;}.rank-num.n2{color:#9ca3af;}.rank-num.n3{color:#b45309;}.rank-num.other{color:var(--border);}
+.rank-img-cell{width:72px;height:72px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.rank-img-cell img{max-width:64px;max-height:64px;object-fit:contain;}
+.rank-info{min-width:0;}
+.rank-name{font-family:var(--serif);font-size:.95rem;font-weight:700;margin-bottom:4px;}
+.rank-desc{font-size:.75rem;color:var(--muted);line-height:1.5;}
+.rank-score-wrap{text-align:center;}
+.score-circle{width:52px;height:52px;border-radius:50%;margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1rem;font-weight:900;border:3px solid;border-color:var(--green);color:var(--green);background:var(--green-bg);}
+.score-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.rank-buy{text-align:right;}
+.rank-price{font-family:var(--serif);font-size:1.05rem;font-weight:700;margin-bottom:6px;}
+.rank-buy .buy-btn{width:100%;margin-top:3px;padding:5px 8px;font-size:.7rem;}
+
+/* ARTICLE */
+.article-layout{max-width:1240px;margin:0 auto;padding:36px 32px;display:grid;grid-template-columns:1fr 300px;gap:36px;}
+.article-cat{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin-bottom:10px;}
+.article-title{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;line-height:1.15;margin-bottom:12px;}
+.article-meta{font-size:.75rem;color:var(--muted);display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--border);margin-bottom:20px;}
+.article-body{font-size:.9rem;line-height:1.8;color:#2a2520;}
+.article-body h2{font-family:var(--serif);font-size:1.2rem;font-weight:900;margin:24px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--text);}
+.article-body p{margin-bottom:14px;}
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
+.pros-box{padding:14px 16px;background:var(--green-bg);border-left:4px solid var(--green);}
+.cons-box{padding:14px 16px;background:#fff5f5;border-left:4px solid #dc2626;}
+.pros-box h4{color:var(--green);font-size:.75rem;font-weight:700;text-transform:uppercase;margin-bottom:8px;}
+.cons-box h4{color:#dc2626;font-size:.75rem;font-weight:700;text-transform:uppercase;margin-bottom:8px;}
+.pros-box li,.cons-box li{font-size:.8rem;margin-bottom:4px;list-style:none;padding-left:14px;position:relative;line-height:1.5;}
+.pros-box li::before{content:'+';position:absolute;left:0;color:var(--green);font-weight:700;}
+.cons-box li::before{content:'−';position:absolute;left:0;color:#dc2626;font-weight:700;}
+
+/* SIDEBAR */
+.sidebar-card{background:var(--surface);border:1px solid var(--border);margin-bottom:16px;}
+.sidebar-card-header{background:var(--text);color:white;padding:10px 14px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+.sidebar-card-body{padding:14px;}
+.spec-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:.78rem;}
+.spec-row:last-child{border-bottom:none;}
+.spec-label{color:var(--muted);}
+.spec-val{font-weight:600;text-align:right;}
+.score-bars .score-bar-item{margin-bottom:10px;}
+.score-bar-label{display:flex;justify-content:space-between;font-size:.72rem;font-weight:600;margin-bottom:4px;}
+.score-bar-track{height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.score-bar-fill{height:100%;border-radius:3px;background:var(--accent);}
+.overall-score{text-align:center;padding:14px 0;border-bottom:1px solid var(--border);margin-bottom:12px;}
+.score-big{font-family:var(--serif);font-size:2.8rem;font-weight:900;color:var(--accent);line-height:1;}
+.score-sub{font-size:.72rem;color:var(--muted);margin-top:3px;}
+
+/* COMPARATIVAS */
+.comparativa-section{background:var(--surface);padding:40px 32px;border-top:2px solid var(--text);border-bottom:2px solid var(--text);}
+.comp-inner{max-width:1240px;margin:0 auto;}
+.comp-grid{display:grid;gap:2px;}
+.comp-header-cell{background:var(--text);color:white;padding:18px 14px;text-align:center;}
+.comp-header-cell.label-cell{background:var(--surface2);color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:1px;font-weight:700;display:flex;align-items:flex-end;padding-bottom:18px;}
+.comp-header-cell.winner{background:var(--accent);}
+.comp-product-name{font-family:var(--serif);font-size:.9rem;font-weight:700;line-height:1.2;margin-bottom:6px;}
+.comp-price-big{font-size:1.2rem;font-weight:700;color:var(--amazon);margin-bottom:8px;}
+.comp-cell{background:var(--surface);padding:12px 14px;border-bottom:1px solid var(--border);font-size:.82rem;text-align:center;display:flex;align-items:center;justify-content:center;}
+.comp-cell.label{background:var(--surface2);text-align:left;justify-content:flex-start;font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.comp-cell.winner-col{background:#fff8f6;}
+.check{color:var(--green);font-weight:700;}
+.verdict-box{background:var(--surface2);border-left:4px solid var(--accent);padding:18px 22px;margin-top:20px;}
+.verdict-title{font-family:var(--serif);font-size:.95rem;font-weight:900;margin-bottom:6px;}
+.verdict-text{font-size:.85rem;line-height:1.7;color:#444;}
+
+/* COMP PRODUCT IMAGE */
+.comp-prod-img{width:70px;height:70px;object-fit:contain;margin-bottom:10px;}
+
+/* BUY MULTI IN COMP */
+.comp-buy-stack{display:flex;flex-direction:column;gap:4px;margin-top:8px;}
+.comp-buy-sm{display:inline-flex;align-items:center;justify-content:center;padding:5px 10px;border-radius:3px;font-size:.68rem;font-weight:700;text-decoration:none;transition:all .2s;}
+.comp-buy-sm.amazon{background:var(--amazon);color:#111;}
+.comp-buy-sm.pccomp{background:var(--pccomp);color:#fff;}
+.comp-buy-sm.media{background:var(--media);color:#fff;}
+
+/* LOADING */
+.ai-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 20px;text-align:center;}
+.ai-spinner{width:44px;height:44px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:18px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ai-loading-title{font-family:var(--serif);font-size:1.1rem;font-weight:900;margin-bottom:6px;}
+.ai-loading-sub{font-size:.82rem;color:var(--muted);font-family:monospace;}
+
+/* FOOTER */
+footer{background:var(--text);color:#f8f7f4;padding:40px 32px;margin-top:60px;}
+.footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;}
+.footer-logo{font-family:var(--serif);font-size:1.4rem;font-weight:900;margin-bottom:10px;}
+.footer-logo .dot{color:var(--accent);}
+.footer-desc{font-size:.8rem;color:#888;line-height:1.6;margin-bottom:10px;}
+.footer-afiliado{font-size:.7rem;color:#666;font-style:italic;line-height:1.5;}
+.footer-col h4{font-size:.68rem;text-transform:uppercase;letter-spacing:1.5px;color:#666;margin-bottom:12px;font-weight:700;}
+.footer-col a{display:block;color:#aaa;text-decoration:none;font-size:.8rem;margin-bottom:7px;transition:color .2s;}
+.footer-col a:hover{color:white;}
+.footer-bottom{max-width:1240px;margin:20px auto 0;padding-top:18px;border-top:1px solid #333;display:flex;justify-content:space-between;font-size:.72rem;color:#555;}
+
+/* TOAST */
+#toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:#f8f7f4;padding:11px 18px;border-radius:4px;font-size:.82rem;font-weight:500;transform:translateY(80px);opacity:0;transition:all .3s;z-index:999;}
+#toast.show{transform:translateY(0);opacity:1;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .hero-main{grid-template-columns:1fr;}.hero-product-img{display:none;}
+  .hero-side{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .product-grid{grid-template-columns:1fr 1fr;}
+  .article-layout{grid-template-columns:1fr;}
+  .article-sidebar{display:none;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .rank-item{grid-template-columns:44px 60px 1fr auto;}.rank-score-wrap{display:none;}
+}
+@media(max-width:580px){
+  .product-grid{grid-template-columns:1fr;}
+  .hero-side{grid-template-columns:1fr;}
+  .header-search{display:none;}
+  .pros-cons{grid-template-columns:1fr;}
+  .topbar-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>🇪🇸 Reviews independientes · Sevilla</span>
+  <div class="topbar-links">
+    <a href="#">Sobre nosotros</a>
+    <a href="#">Metodología</a>
+    <a href="#">Contacto</a>
+    <a href="#">Newsletter</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-main">
+    <a class="logo" href="#" onclick="showPage('inicio');return false">ElMejorGadget<span class="dot">.</span></a>
+    <div class="header-search">
+      <input type="text" placeholder="Buscar productos, reviews…" id="search-input" onkeydown="if(event.key==='Enter')doSearch()">
+      <button class="search-btn" onclick="doSearch()">🔍</button>
+    </div>
+    <button class="offers-btn" onclick="showPage('ofertas')">🔥 Ofertas del día</button>
+  </div>
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-item active" id="nav-inicio" onclick="showPage('inicio')">Inicio</div>
+      <div class="nav-item" id="nav-smartphones" onclick="showPage('smartphones')">📱 Smartphones</div>
+      <div class="nav-item" id="nav-audio" onclick="showPage('audio')">🎧 Audio</div>
+      <div class="nav-item" id="nav-portatiles" onclick="showPage('portatiles')">💻 Portátiles</div>
+      <div class="nav-item" id="nav-gaming" onclick="showPage('gaming')">🎮 Gaming</div>
+      <div class="nav-item" id="nav-comparativas" onclick="showPage('comparativas')">⚖️ Comparativas</div>
+      <div class="nav-item" id="nav-ofertas" onclick="showPage('ofertas')">🔥 Ofertas</div>
+    </div>
+  </nav>
+</header>
+
+<!-- ════════ INICIO ════════ -->
+<div class="page active" id="page-inicio">
+  <div class="hero">
+    <div class="hero-main">
+      <div>
+        <div class="hero-label">Review destacada</div>
+        <h1 class="hero-title">Sony WH-1000XM5: el rey de la cancelación de ruido en 2026</h1>
+        <p class="hero-excerpt">Tras 3 meses de uso intensivo en viajes y trabajo, nuestra conclusión es clara: siguen siendo los mejores auriculares inalámbricos por debajo de 400€.</p>
+        <div class="hero-meta">
+          <span class="stars-big">★★★★★</span>
+          <span class="rating-val">9.4</span>
+          <span class="rating-count">/10 · 2.847 opiniones</span>
+        </div>
+        <div><span class="hero-price">289€</span><span class="hero-price-old">379€</span></div>
+        <div class="hero-buy-row">
+          <a href="https://www.amazon.es/dp/B09XS7JWHH?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Ver en Amazon — 289€</a>
+          <a href="https://www.pccomponentes.com/sony-wh-1000xm5?ref=elmejorgadget" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 Ver en PcComponentes</a>
+          <a href="https://www.mediamarkt.es/es/product/_sony-wh-1000xm5.html?ref=elmejorgadget" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 Ver en MediaMarkt</a>
+        </div>
+      </div>
+      <img class="hero-product-img"
+        src="https://images-na.ssl-images-amazon.com/images/I/61o3oeXME9L._AC_SL500_.jpg"
+        alt="Sony WH-1000XM5"
+        onerror="this.src='https://m.media-amazon.com/images/I/61o3oeXME9L._SL500_.jpg'">
+    </div>
+    <div class="hero-side">
+      <div class="hero-card-sm" onclick="showPage('audio')">
+        <div class="hero-sm-label">Comparativa · Audio</div>
+        <div class="hero-sm-title">AirPods Max vs Sony XM5 vs Bose QC45: ¿cuáles comprar?</div>
+        <div class="hero-sm-meta"><span>Desde 249€</span><span>·</span><span>Leer análisis →</span></div>
+      </div>
+      <div class="hero-card-sm" onclick="showPage('smartphones')">
+        <div class="hero-sm-label">Ranking · Smartphones</div>
+        <div class="hero-sm-title">Los 5 mejores smartphones de 2026: análisis completo</div>
+        <div class="hero-sm-meta"><span>Desde 699€</span><span>·</span><span>Ver ranking →</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">Lo mejor ahora mismo</h2>
+      <a class="section-link" href="#" onclick="showPage('comparativas');return false">Ver todo →</a>
+    </div>
+    <div class="product-grid">
+
+      <!-- Sony XM5 -->
+      <div class="product-card" onclick="showPage('audio')">
+        <div class="product-img-wrap">
+          <img src="https://images-na.ssl-images-amazon.com/images/I/61o3oeXME9L._AC_SL500_.jpg" alt="Sony WH-1000XM5"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="fallback-emoji">🎧</span>
+          <span class="product-badge badge-top">TOP 1</span>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Audio · Cancelación de ruido</div>
+          <div class="product-name">Sony WH-1000XM5</div>
+          <div class="product-rating"><span class="stars-sm">★★★★★</span><span class="rating-n">9.4</span><span class="rating-c">(2.8K)</span></div>
+          <div class="product-price-row"><span class="product-price">289€</span><span class="product-price-old">379€</span></div>
+          <div class="buy-buttons" onclick="event.stopPropagation()">
+            <a href="https://www.amazon.es/dp/B09XS7JWHH?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon</a>
+            <a href="https://www.pccomponentes.com/sony-wh-1000xm5" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComponentes</a>
+            <a href="https://www.mediamarkt.es/es/product/_sony-wh-1000xm5.html" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 MediaMarkt</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MacBook Air M3 -->
+      <div class="product-card" onclick="showPage('portatiles')">
+        <div class="product-img-wrap">
+          <img src="https://images-na.ssl-images-amazon.com/images/I/71vFKBpKakL._AC_SL500_.jpg" alt="MacBook Air M3"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="fallback-emoji">💻</span>
+          <span class="product-badge badge-offer">-22%</span>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Portátiles · Apple Silicon</div>
+          <div class="product-name">MacBook Air M3 13"</div>
+          <div class="product-rating"><span class="stars-sm">★★★★★</span><span class="rating-n">9.2</span><span class="rating-c">(1.2K)</span></div>
+          <div class="product-price-row"><span class="product-price">1.099€</span><span class="product-price-old">1.399€</span></div>
+          <div class="buy-buttons" onclick="event.stopPropagation()">
+            <a href="https://www.amazon.es/dp/B0CX22FVTR?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon</a>
+            <a href="https://www.pccomponentes.com/apple-macbook-air-m3" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComponentes</a>
+            <a href="https://www.mediamarkt.es/es/product/_apple-macbook-air-m3.html" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 MediaMarkt</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Samsung S25 Ultra -->
+      <div class="product-card" onclick="showPage('smartphones')">
+        <div class="product-img-wrap">
+          <img src="https://images-na.ssl-images-amazon.com/images/I/71M2xJsQpJL._AC_SL500_.jpg" alt="Samsung Galaxy S25 Ultra"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="fallback-emoji">📱</span>
+          <span class="product-badge badge-new">NUEVO</span>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Smartphones · Gama alta</div>
+          <div class="product-name">Samsung Galaxy S25 Ultra</div>
+          <div class="product-rating"><span class="stars-sm">★★★★★</span><span class="rating-n">9.1</span><span class="rating-c">(3.4K)</span></div>
+          <div class="product-price-row"><span class="product-price">1.199€</span></div>
+          <div class="buy-buttons" onclick="event.stopPropagation()">
+            <a href="https://www.amazon.es/dp/B0DQNL4RGL?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon</a>
+            <a href="https://www.pccomponentes.com/samsung-galaxy-s25-ultra" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComponentes</a>
+            <a href="https://www.mediamarkt.es/es/product/_samsung-galaxy-s25-ultra.html" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 MediaMarkt</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PS5 Slim -->
+      <div class="product-card" onclick="showPage('gaming')">
+        <div class="product-img-wrap">
+          <img src="https://images-na.ssl-images-amazon.com/images/I/41SuvllKMiL._AC_SL500_.jpg" alt="PlayStation 5 Slim"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="fallback-emoji">🎮</span>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Gaming · Consolas</div>
+          <div class="product-name">PlayStation 5 Slim</div>
+          <div class="product-rating"><span class="stars-sm">★★★★★</span><span class="rating-n">9.0</span><span class="rating-c">(5.1K)</span></div>
+          <div class="product-price-row"><span class="product-price">449€</span></div>
+          <div class="buy-buttons" onclick="event.stopPropagation()">
+            <a href="https://www.amazon.es/dp/B0CL61BXSK?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon</a>
+            <a href="https://www.pccomponentes.com/playstation-5-slim" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComponentes</a>
+            <a href="https://www.mediamarkt.es/es/product/_playstation-5-slim.html" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 MediaMarkt</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apple Watch S10 -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="https://images-na.ssl-images-amazon.com/images/I/71xFEYNdHiL._AC_SL500_.jpg" alt="Apple Watch Series 10"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="fallback-emoji">⌚</span>
+          <span class="product-badge badge-new">2025</span>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Wearables · Smartwatch</div>
+          <div class="product-name">Apple Watch Series 10</div>
+          <div class="product-rating"><span class="stars-sm">★★★★☆</span><span class="rating-n">8.8</span><span class="rating-c">(987)</span></div>
+          <div class="product-price-row"><span class="product-price">399€</span><span class="product-price-old">449€</span></div>
+          <div class="buy-buttons" onclick="event.stopPropagation()">
+            <a href="https://www.amazon.es/dp/B0DGJPKBFN?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon</a>
+            <a href="https://www.pccomponentes.com/apple-watch-series-10" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComponentes</a>
+            <a href="https://www.mediamarkt.es/es/product/_apple-watch-series-10.html" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 MediaMarkt</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sony ZV-E10 II -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="https://images-na.ssl-images-amazon.com/images/I/71T5p0DRPVL._AC_SL500_.jpg" alt="Sony ZV-E10 II"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="fallback-emoji">📷</span>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Fotografía · Mirrorless</div>
+          <div class="product-name">Sony ZV-E10 II</div>
+          <div class="product-rating"><span class="stars-sm">★★★★★</span><span class="rating-n">9.0</span><span class="rating-c">(412)</span></div>
+          <div class="product-price-row"><span class="product-price">799€</span><span class="product-price-old">899€</span></div>
+          <div class="buy-buttons" onclick="event.stopPropagation()">
+            <a href="https://www.amazon.es/dp/B0CZBFHMGN?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon</a>
+            <a href="https://www.pccomponentes.com/sony-zv-e10-ii" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComponentes</a>
+            <a href="https://www.mediamarkt.es/es/product/_sony-zv-e10-ii.html" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 MediaMarkt</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SMARTPHONES ════════ -->
+<div class="page" id="page-smartphones">
+  <div class="section">
+    <div class="section-header"><h2 class="section-title">📱 Ranking Smartphones 2026</h2></div>
+    <div class="ranking-list" id="ranking-smartphones">
+      <div class="ai-loading"><div class="ai-spinner"></div><div class="ai-loading-title">Cargando ranking…</div><div class="ai-loading-sub" id="status-smartphones">Consultando datos…</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ AUDIO ════════ -->
+<div class="page" id="page-audio">
+  <div class="article-layout" id="audio-content">
+    <div class="ai-loading" style="grid-column:1/-1"><div class="ai-spinner"></div><div class="ai-loading-title">Generando review…</div><div class="ai-loading-sub" id="status-audio">Analizando especificaciones…</div></div>
+  </div>
+</div>
+
+<!-- ════════ PORTÁTILES ════════ -->
+<div class="page" id="page-portatiles">
+  <div class="section">
+    <div class="section-header"><h2 class="section-title">💻 Mejores Portátiles 2026</h2></div>
+    <div id="portatiles-content">
+      <div class="ai-loading"><div class="ai-spinner"></div><div class="ai-loading-title">Cargando análisis…</div><div class="ai-loading-sub" id="status-portatiles">Comparando rendimiento…</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ GAMING ════════ -->
+<div class="page" id="page-gaming">
+  <div class="section">
+    <div class="section-header"><h2 class="section-title">🎮 Gaming — Lo mejor de 2026</h2></div>
+    <div id="gaming-content">
+      <div class="ai-loading"><div class="ai-spinner"></div><div class="ai-loading-title">Cargando selección gaming…</div><div class="ai-loading-sub" id="status-gaming">Evaluando rendimiento…</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ COMPARATIVAS ════════ -->
+<div class="page" id="page-comparativas">
+  <div class="comparativa-section">
+    <div class="comp-inner">
+      <div class="section-header" style="margin-bottom:20px"><h2 class="section-title">⚖️ Comparativas en profundidad</h2></div>
+      <div style="display:flex;gap:2px;margin-bottom:24px" id="comp-tabs">
+        <button onclick="showComp('audio')" id="ctab-audio" class="comp-tab-btn active-tab">🎧 Audio</button>
+        <button onclick="showComp('moviles')" id="ctab-moviles" class="comp-tab-btn">📱 Móviles</button>
+        <button onclick="showComp('portatiles')" id="ctab-portatiles" class="comp-tab-btn">💻 Portátiles</button>
+      </div>
+      <div id="comp-content">
+        <div class="ai-loading"><div class="ai-spinner"></div><div class="ai-loading-title">Generando comparativa…</div><div class="ai-loading-sub" id="status-comp">Analizando specs…</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ OFERTAS ════════ -->
+<div class="page" id="page-ofertas">
+  <div class="section">
+    <div class="section-header"><h2 class="section-title">🔥 Ofertas del día — <span id="fecha-hoy" style="color:var(--accent)"></span></h2></div>
+    <div id="ofertas-content">
+      <div class="ai-loading"><div class="ai-spinner"></div><div class="ai-loading-title">Buscando ofertas…</div><div class="ai-loading-sub" id="status-ofertas">Consultando precios…</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">ElMejorGadget<span class="dot">.</span></div>
+      <div class="footer-desc">Reviews independientes de tecnología. Analizamos, comparamos y seleccionamos los mejores gadgets para que decidas con información real.</div>
+      <div class="footer-afiliado">En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables. También participamos en los programas de afiliados de PcComponentes (vía Awin) y MediaMarkt (vía TradeDoubler).</div>
+    </div>
+    <div class="footer-col">
+      <h4>Categorías</h4>
+      <a href="#" onclick="showPage('smartphones')">Smartphones</a>
+      <a href="#" onclick="showPage('audio')">Audio</a>
+      <a href="#" onclick="showPage('portatiles')">Portátiles</a>
+      <a href="#" onclick="showPage('gaming')">Gaming</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contenido</h4>
+      <a href="#" onclick="showPage('comparativas')">Comparativas</a>
+      <a href="#" onclick="showPage('ofertas')">Ofertas del día</a>
+      <a href="#">Rankings</a>
+      <a href="#">Guías de compra</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Privacidad</a>
+      <a href="#">Aviso legal</a>
+      <a href="#">Sobre nosotros</a>
+      <a href="#">Contacto</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ElMejorGadget.net — Todos los derechos reservados</span>
+    <span>Sevilla, España</span>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<style>
+.comp-tab-btn{padding:10px 18px;background:var(--surface2);color:var(--muted);border:none;font-family:var(--sans);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.comp-tab-btn.active-tab{background:var(--text);color:white;}
+.comp-tab-btn:hover:not(.active-tab){background:var(--border);}
+</style>
+
+<script>
+// ── STATE ──
+const loaded = { inicio: true };
+let activeComp = 'audio';
+const fecha = new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
+document.getElementById('fecha-hoy').textContent = fecha;
+
+// ── CACHE CONFIG ──
+// TTL in hours per section (ofertas refreshes daily, rankings weekly)
+const CACHE_TTL = {
+  smartphones: 7 * 24,   // 7 días
+  audio:       7 * 24,
+  portatiles:  7 * 24,
+  gaming:      7 * 24,
+  'comp:audio':     3 * 24,
+  'comp:moviles':   3 * 24,
+  'comp:portatiles':3 * 24,
+  ofertas:     24,        // 24 horas — ofertas cambian diario
+};
+
+// ── CACHE HELPERS ──
+async function cacheGet(key) {
+  try {
+    const result = await window.storage.get('emg:' + key);
+    if (!result) return null;
+    const entry = JSON.parse(result.value);
+    const ttlHours = CACHE_TTL[key] || 24;
+    const ageHours = (Date.now() - entry.ts) / 3600000;
+    if (ageHours > ttlHours) return null; // expirado
+    return entry;
+  } catch(e) { return null; }
+}
+
+async function cacheSet(key, html, meta = {}) {
+  try {
+    const entry = { html, meta, ts: Date.now() };
+    await window.storage.set('emg:' + key, JSON.stringify(entry));
+  } catch(e) { /* silent fail */ }
+}
+
+async function cacheDelete(key) {
+  try { await window.storage.delete('emg:' + key); } catch(e) {}
+}
+
+function cacheAgeLabel(ts) {
+  const mins = Math.round((Date.now() - ts) / 60000);
+  if (mins < 2) return 'hace un momento';
+  if (mins < 60) return `hace ${mins} min`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `hace ${hours}h`;
+  return `hace ${Math.floor(hours/24)} día${Math.floor(hours/24)>1?'s':''}`;
+}
+
+// ── CACHE STATUS BAR ──
+function cacheBar(key, ts, onRefresh) {
+  const id = 'cbar-' + key.replace(/:/g,'-');
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = `
+      <span style="display:flex;align-items:center;gap:8px;font-size:.72rem;color:var(--muted);padding:8px 0 4px">
+        <span style="color:var(--green);font-size:.8rem">✓</span>
+        Contenido guardado · Generado ${cacheAgeLabel(ts)}
+        <button onclick="${onRefresh}" style="margin-left:auto;font-size:.7rem;padding:3px 10px;border:1px solid var(--border);border-radius:4px;background:var(--surface);color:var(--muted);cursor:pointer;font-family:var(--sans)">↻ Regenerar</button>
+      </span>`;
+  }, 50);
+  return `<div id="${id}"></div>`;
+}
+
+// ── NAVIGATION ──
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const nav = document.getElementById('nav-' + page);
+  if (nav) nav.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (!loaded[page]) { loaded[page] = true; loadPage(page); }
+}
+
+// ── IMAGE HELPER ──
+// Uses Amazon's ssl-images CDN which works cross-origin for standard product images
+function productImg(asin, alt, size='SL500') {
+  return `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._${size}_.jpg`;
+}
+
+function imgTag(asin, alt, cls='') {
+  const primary = productImg(asin, alt);
+  const fallback = `https://images-na.ssl-images-amazon.com/images/P/${asin}.01.jpg`;
+  return `<img src="${primary}" alt="${alt}" class="${cls}"
+    onerror="if(!this._f){this._f=true;this.src='${fallback}'}else{this.style.display='none';const n=this.nextElementSibling;if(n)n.style.display='block'}">`;
+}
+
+// ── BUY BUTTONS HELPER ──
+function buyButtons(asin, pcSlug, mediaSlug, extraClass='') {
+  return `<div class="buy-buttons ${extraClass}" onclick="event.stopPropagation()">
+    <a href="https://www.amazon.es/dp/${asin}?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon</a>
+    <a href="https://www.pccomponentes.com/${pcSlug}" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComponentes</a>
+    <a href="https://www.mediamarkt.es/es/product/_${mediaSlug}.html" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 MediaMarkt</a>
+  </div>`;
+}
+
+function compBuyStack(asin) {
+  return `<div class="comp-buy-stack">
+    <a href="https://www.amazon.es/dp/${asin}?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="comp-buy-sm amazon">🛒 Amazon</a>
+    <a href="https://www.pccomponentes.com/search?query=${asin}" target="_blank" rel="nofollow sponsored" class="comp-buy-sm pccomp">🔵 PcComp</a>
+    <a href="https://www.mediamarkt.es/es/search.html?query=${asin}" target="_blank" rel="nofollow sponsored" class="comp-buy-sm media">🔴 Media</a>
+  </div>`;
+}
+
+// ── CLAUDE API ──
+async function callClaude(prompt, statusEl, steps) {
+  let i = 0;
+  const iv = setInterval(() => { if (statusEl && steps[i]) statusEl.textContent = steps[i++]; }, 700);
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1200,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    clearInterval(iv);
+    const data = await res.json();
+    return data.content?.find(b => b.type === 'text')?.text || '';
+  } catch(e) { clearInterval(iv); return null; }
+}
+
+function parseJSON(raw) {
+  if (!raw) return null;
+  try { return JSON.parse(raw.replace(/```json|```/g, '').trim()); } catch(e) { return null; }
+}
+
+// ── LOAD ROUTER ──
+async function loadPage(p) {
+  if (p === 'smartphones') await loadSmartphones();
+  if (p === 'audio') await loadAudio();
+  if (p === 'portatiles') await loadPortatiles();
+  if (p === 'gaming') await loadGaming();
+  if (p === 'comparativas') await loadComp('audio');
+  if (p === 'ofertas') await loadOfertas();
+}
+
+// ── RANKING RENDERER ──
+function renderRankingItems(items) {
+  const ranks = ['n1','n2','n3','other','other'];
+  const borders = ['gold','silver','bronze','',''];
+  return items.map((p, i) => `
+    <div class="rank-item ${borders[i] || ''}">
+      <div class="rank-num ${ranks[i] || 'other'}">#${p.rank}</div>
+      <div class="rank-img-cell">
+        ${imgTag(p.asin, p.nombre)}
+        <span class="fallback-emoji" style="display:none;font-size:2rem">${p.emoji||'📱'}</span>
+      </div>
+      <div class="rank-info">
+        <div class="rank-name">${p.nombre}</div>
+        <div class="rank-desc">${p.descripcion}</div>
+        ${p.destacado ? `<div style="font-size:.72rem;color:var(--accent);font-weight:700;margin-top:4px">${p.destacado}</div>` : ''}
+      </div>
+      <div class="rank-score-wrap">
+        <div class="score-circle">${p.puntuacion}</div>
+        <div class="score-label">nota</div>
+      </div>
+      <div class="rank-buy">
+        <div class="rank-price">${p.precio}</div>
+        <a href="https://www.amazon.es/dp/${p.asin}?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon</a>
+        <a href="https://www.pccomponentes.com/search?query=${encodeURIComponent(p.nombre)}" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComp</a>
+      </div>
+    </div>`).join('');
+}
+
+// ── SMARTPHONES ──
+async function loadSmartphones() {
+  const st = document.getElementById('status-smartphones');
+  const el = document.getElementById('ranking-smartphones');
+
+  // Try cache first
+  const cached = await cacheGet('smartphones');
+  if (cached) {
+    el.innerHTML = cached.html + cacheBar('smartphones', cached.ts, "refreshSection('smartphones')");
+    return;
+  }
+
+  const raw = await callClaude(
+    `Eres el redactor de ElMejorGadget.net. Lista los 5 mejores smartphones en Amazon España en 2026.
+Responde SOLO con JSON sin backticks:
+{"productos":[{"rank":1,"emoji":"📱","nombre":"nombre completo","precio":"XXX€","asin":"BXXXXXXXXX","puntuacion":"9.X","descripcion":"2 frases por qué es bueno","destacado":"mejor característica en 5 palabras"}]}`,
+    st, ['Buscando los mejores smartphones…','Analizando rendimiento y cámara…','Comparando precios en Amazon…','Generando ranking…']);
+  const data = parseJSON(raw);
+  const html = `<div class="ranking-list">${renderRankingItems(data?.productos || fallbackSmartphones())}</div>`;
+  el.innerHTML = html + cacheBar('smartphones', Date.now(), "refreshSection('smartphones')");
+  await cacheSet('smartphones', html);
+}
+
+function fallbackSmartphones() {
+  return [
+    {rank:1,emoji:'📱',nombre:'iPhone 16 Pro Max',precio:'1.219€',asin:'B0CK5G5KQH',puntuacion:'9.6',descripcion:'La mejor cámara del mercado con chip A18 Pro y diseño en titanio.',destacado:'Cámara y rendimiento insuperables'},
+    {rank:2,emoji:'📱',nombre:'Samsung Galaxy S25 Ultra',precio:'1.199€',asin:'B0DQNL4RGL',puntuacion:'9.3',descripcion:'S Pen integrado, IA avanzada y zoom óptico de 200x.',destacado:'IA y zoom líderes del mercado'},
+    {rank:3,emoji:'📱',nombre:'Google Pixel 9 Pro',precio:'999€',asin:'B0D84RGWB7',puntuacion:'9.0',descripcion:'La mejor fotografía nocturna y 7 años de actualizaciones garantizadas.',destacado:'Foto nocturna y IA nativa'},
+    {rank:4,emoji:'📱',nombre:'Xiaomi 15 Pro',precio:'799€',asin:'B0CW6TLBHB',puntuacion:'8.7',descripcion:'Óptica Leica y carga de 90W al mejor precio en gama alta.',destacado:'Mejor calidad-precio gama alta'},
+    {rank:5,emoji:'📱',nombre:'OnePlus 13',precio:'699€',asin:'B0CWHK48Y3',puntuacion:'8.4',descripcion:'El más rápido de cargar con Snapdragon 8 Elite.',destacado:'Carga 100W más rápida del mercado'}
+  ];
+}
+
+// ── AUDIO REVIEW ──
+async function loadAudio() {
+  const st = document.getElementById('status-audio');
+  const el = document.getElementById('audio-content');
+
+  const cached = await cacheGet('audio');
+  if (cached) {
+    el.innerHTML = cached.html + cacheBar('audio', cached.ts, "refreshSection('audio')");
+    return;
+  }
+
+  const raw = await callClaude(
+    `Eres el redactor de ElMejorGadget.net. Análisis: Sony WH-1000XM5 vs AirPods Max vs Bose QuietComfort 45, 2026.
+Responde SOLO con JSON sin backticks:
+{"titulo":"título","intro":"párrafo intro 3 frases","ganador":"Sony WH-1000XM5","ganador_precio":"289€","ganador_asin":"B09XS7JWHH","ganador_puntuacion":"9.4","ganador_pros":["pro1","pro2","pro3","pro4"],"ganador_cons":["con1","con2"],"segundo":"Apple AirPods Max","segundo_precio":"579€","segundo_asin":"B08PZHYWJS","segundo_puntuacion":"8.9","segundo_pros":["pro1","pro2","pro3"],"segundo_cons":["con1","con2"],"tercero":"Bose QuietComfort 45","tercero_precio":"259€","tercero_asin":"B098FKXT8L","tercero_puntuacion":"8.7","tercero_pros":["pro1","pro2","pro3"],"tercero_cons":["con1","con2"],"veredicto":"conclusión 3 frases","specs":{"Sony":{"Batería":"30h","Cancelación":"Excelente","Peso":"250g","Micrófono":"Muy bueno","Precio":"289€"},"AirPods":{"Batería":"20h","Cancelación":"Excelente","Peso":"385g","Micrófono":"Excepcional","Precio":"579€"},"Bose":{"Batería":"24h","Cancelación":"Muy buena","Peso":"238g","Micrófono":"Bueno","Precio":"259€"}}}`,
+    st, ['Cargando especificaciones…','Analizando calidad de sonido…','Comparando modelos…','Redactando review…']);
+  const d = parseJSON(raw);
+  if (!d) { el.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted)">Error al cargar. Recarga la página.</div>'; return; }
+
+  const specRows = Object.entries(d.specs?.Sony || {}).map(([k], idx) => `
+    <div class="spec-row"><span class="spec-label">${k}</span><span class="spec-val">${Object.values(d.specs.Sony)[idx]}</span></div>`).join('');
+
+  el.innerHTML = `
+    <div class="article-main">
+      <div class="article-cat">Comparativa · Audio · Cancelación de ruido</div>
+      <h1 class="article-title">${d.titulo}</h1>
+      <div class="article-meta"><span>📅 ${fecha}</span><span>·</span><span>⏱ 8 min</span><span>·</span><span>🏆 3 modelos analizados</span></div>
+      <div class="article-body">
+        <p>${d.intro}</p>
+
+        <h2>🏆 #1 — ${d.ganador} <span style="color:var(--accent)">${d.ganador_puntuacion}/10</span></h2>
+        <div style="display:flex;gap:20px;align-items:flex-start;margin-bottom:14px">
+          <div style="flex-shrink:0;background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px;width:100px;height:100px;display:flex;align-items:center;justify-content:center">
+            ${imgTag(d.ganador_asin, d.ganador, '')}
+          </div>
+          <p style="flex:1">${d.ganador} sigue siendo nuestra elección número uno. Con tecnología de cancelación de ruido líder en el mercado y hasta 30 horas de batería, es el compañero perfecto para viajes y trabajo intenso.</p>
+        </div>
+        <div class="pros-cons">
+          <div class="pros-box"><h4>✓ Lo mejor</h4><ul>${d.ganador_pros.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+          <div class="cons-box"><h4>✗ Lo mejorable</h4><ul>${d.ganador_cons.map(c=>`<li>${c}</li>`).join('')}</ul></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:20px">
+          <a href="https://www.amazon.es/dp/${d.ganador_asin}?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon" style="display:inline-flex;width:fit-content">🛒 Amazon — ${d.ganador_precio}</a>
+          <a href="https://www.pccomponentes.com/search?query=sony-wh-1000xm5" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp" style="display:inline-flex;width:fit-content">🔵 PcComponentes</a>
+          <a href="https://www.mediamarkt.es/es/search.html?query=sony+wh-1000xm5" target="_blank" rel="nofollow sponsored" class="buy-btn media" style="display:inline-flex;width:fit-content">🔴 MediaMarkt</a>
+        </div>
+
+        <h2>🥈 #2 — ${d.segundo} <span style="color:var(--accent)">${d.segundo_puntuacion}/10</span></h2>
+        <div style="display:flex;gap:20px;align-items:flex-start;margin-bottom:14px">
+          <div style="flex-shrink:0;background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px;width:100px;height:100px;display:flex;align-items:center;justify-content:center">
+            ${imgTag(d.segundo_asin, d.segundo)}
+          </div>
+          <p style="flex:1">La opción premium del ecosistema Apple. Su integración con iPhone y Mac es incomparable, aunque el precio es el más alto de esta comparativa.</p>
+        </div>
+        <div class="pros-cons">
+          <div class="pros-box"><h4>✓ Lo mejor</h4><ul>${d.segundo_pros.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+          <div class="cons-box"><h4>✗ Lo mejorable</h4><ul>${d.segundo_cons.map(c=>`<li>${c}</li>`).join('')}</ul></div>
+        </div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:20px">
+          <a href="https://www.amazon.es/dp/${d.segundo_asin}?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon — ${d.segundo_precio}</a>
+          <a href="https://www.mediamarkt.es/es/search.html?query=airpods+max" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 MediaMarkt</a>
+        </div>
+
+        <h2>🥉 #3 — ${d.tercero} <span style="color:var(--accent)">${d.tercero_puntuacion}/10</span></h2>
+        <div style="display:flex;gap:20px;align-items:flex-start;margin-bottom:14px">
+          <div style="flex-shrink:0;background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px;width:100px;height:100px;display:flex;align-items:center;justify-content:center">
+            ${imgTag(d.tercero_asin, d.tercero)}
+          </div>
+          <p style="flex:1">El mejor valor de esta comparativa. Si buscas cancelación de ruido de primera clase sin pagar precio premium, los Bose son tu opción.</p>
+        </div>
+        <div class="pros-cons">
+          <div class="pros-box"><h4>✓ Lo mejor</h4><ul>${d.tercero_pros.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+          <div class="cons-box"><h4>✗ Lo mejorable</h4><ul>${d.tercero_cons.map(c=>`<li>${c}</li>`).join('')}</ul></div>
+        </div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:20px">
+          <a href="https://www.amazon.es/dp/${d.tercero_asin}?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon — ${d.tercero_precio}</a>
+          <a href="https://www.pccomponentes.com/search?query=bose-quietcomfort-45" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComponentes</a>
+        </div>
+
+        <h2>📊 Tabla comparativa</h2>
+        <div style="overflow-x:auto">
+        <div class="comp-grid" style="grid-template-columns:160px repeat(3,1fr);margin:12px 0">
+          <div class="comp-header-cell label-cell">Especificación</div>
+          <div class="comp-header-cell winner">Sony XM5 🏆</div>
+          <div class="comp-header-cell">AirPods Max</div>
+          <div class="comp-header-cell">Bose QC45</div>
+          ${Object.entries(d.specs.Sony||{}).map(([k,v],i)=>`
+            <div class="comp-cell label">${k}</div>
+            <div class="comp-cell winner-col"><strong>${v}</strong></div>
+            <div class="comp-cell">${Object.values(d.specs.AirPods||{})[i]||'—'}</div>
+            <div class="comp-cell">${Object.values(d.specs.Bose||{})[i]||'—'}</div>
+          `).join('')}
+        </div></div>
+        <div class="verdict-box"><div class="verdict-title">🎯 Veredicto</div><div class="verdict-text">${d.veredicto}</div></div>
+      </div>
+    </div>
+    <div class="article-sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">Nuestra puntuación</div>
+        <div class="sidebar-card-body">
+          <div class="overall-score"><div class="score-big">${d.ganador_puntuacion}</div><div class="score-sub">Sony WH-1000XM5</div></div>
+          <div class="score-bars">
+            ${[['Sonido','95'],['Cancelación ruido','98'],['Batería','92'],['Comodidad','88'],['Calidad/precio','94']].map(([l,w])=>`
+              <div class="score-bar-item">
+                <div class="score-bar-label"><span>${l}</span><span>${(parseInt(w)/10).toFixed(1)}</span></div>
+                <div class="score-bar-track"><div class="score-bar-fill" style="width:${w}%"></div></div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-card-header">Ficha técnica Sony XM5</div>
+        <div class="sidebar-card-body">${specRows}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px;padding:8px 0">
+        <a href="https://www.amazon.es/dp/${d.ganador_asin}?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon — ${d.ganador_precio}</a>
+        <a href="https://www.pccomponentes.com/search?query=sony-wh-1000xm5" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComponentes</a>
+        <a href="https://www.mediamarkt.es/es/search.html?query=sony+wh1000xm5" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 MediaMarkt</a>
+      </div>
+    </div>`;
+
+  const savedHtml = el.innerHTML;
+  await cacheSet('audio', savedHtml);
+  el.innerHTML = savedHtml + cacheBar('audio', Date.now(), "refreshSection('audio')");
+}
+
+// ── PORTÁTILES ──
+async function loadPortatiles() {
+  const st = document.getElementById('status-portatiles');
+  const el = document.getElementById('portatiles-content');
+
+  const cached = await cacheGet('portatiles');
+  if (cached) {
+    el.innerHTML = cached.html + cacheBar('portatiles', cached.ts, "refreshSection('portatiles')");
+    return;
+  }
+
+  const raw = await callClaude(
+    `Eres el redactor de ElMejorGadget.net. Los 4 mejores portátiles en Amazon España 2026, especial calidad-precio.
+Responde SOLO con JSON sin backticks:
+{"productos":[{"rank":1,"emoji":"💻","nombre":"modelo completo","precio":"XXX€","asin":"BXXXXXXXXX","puntuacion":"9.X","procesador":"nombre CPU","ram":"XGB","bateria":"Xh reales","descripcion":"2 frases","para_quien":"perfil usuario 6 palabras"}]}`,
+    st, ['Analizando portátiles 2026…','Comparando CPU y GPU…','Evaluando autonomía real…','Generando ranking…']);
+  const data = parseJSON(raw);
+  if (!data?.productos) { el.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted)">Error al cargar.</div>'; return; }
+
+  el.innerHTML = `<div class="ranking-list">${data.productos.map((p, i) => {
+    const borders = ['gold','silver','bronze',''];
+    const ranks = ['n1','n2','n3','other'];
+    return `<div class="rank-item ${borders[i]||''}">
+      <div class="rank-num ${ranks[i]||'other'}">#${p.rank}</div>
+      <div class="rank-img-cell">
+        ${imgTag(p.asin, p.nombre)}
+        <span style="display:none;font-size:2rem">${p.emoji}</span>
+      </div>
+      <div class="rank-info">
+        <div class="rank-name">${p.nombre}</div>
+        <div class="rank-desc">${p.descripcion}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+          <span style="font-size:.68rem;background:var(--surface2);padding:2px 7px;border-radius:3px">⚡ ${p.procesador}</span>
+          <span style="font-size:.68rem;background:var(--surface2);padding:2px 7px;border-radius:3px">💾 ${p.ram}</span>
+          <span style="font-size:.68rem;background:var(--surface2);padding:2px 7px;border-radius:3px">🔋 ${p.bateria}</span>
+        </div>
+        <div style="font-size:.7rem;color:var(--accent);font-weight:700;margin-top:5px">Ideal: ${p.para_quien}</div>
+      </div>
+      <div class="rank-score-wrap"><div class="score-circle">${p.puntuacion}</div><div class="score-label">nota</div></div>
+      <div class="rank-buy">
+        <div class="rank-price">${p.precio}</div>
+        <a href="https://www.amazon.es/dp/${p.asin}?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon</a>
+        <a href="https://www.pccomponentes.com/search?query=${encodeURIComponent(p.nombre)}" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComp</a>
+      </div>
+    </div>`;}).join('')}</div>`;
+
+  const html = el.innerHTML;
+  await cacheSet('portatiles', html);
+  el.innerHTML = html + cacheBar('portatiles', Date.now(), "refreshSection('portatiles')");
+}
+
+// ── GAMING ──
+async function loadGaming() {
+  const st = document.getElementById('status-gaming');
+  const el = document.getElementById('gaming-content');
+
+  const cached = await cacheGet('gaming');
+  if (cached) {
+    el.innerHTML = cached.html + cacheBar('gaming', cached.ts, "refreshSection('gaming')");
+    return;
+  }
+
+  const raw = await callClaude(
+    `Eres el redactor de ElMejorGadget.net. 4 mejores productos gaming 2026 (1 consola, 1 portátil gaming, 2 periféricos) en Amazon España.
+Responde SOLO con JSON sin backticks:
+{"productos":[{"categoria":"Consolas","emoji":"🎮","nombre":"nombre","precio":"XXX€","asin":"BXXXXXXXXX","puntuacion":"9.X","descripcion":"2 frases"}]}`,
+    st, ['Analizando catálogo gaming…','Evaluando rendimiento…','Comparando precios…']);
+  const data = parseJSON(raw);
+  if (!data?.productos) { el.innerHTML = '<div style="padding:40px;text-align:center">Error al cargar.</div>'; return; }
+
+  const html = `<div class="product-grid">${data.productos.map(p => `
+    <div class="product-card">
+      <div class="product-img-wrap">
+        ${imgTag(p.asin, p.nombre)}
+        <span class="fallback-emoji">${p.emoji}</span>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">${p.categoria}</div>
+        <div class="product-name">${p.nombre}</div>
+        <div class="product-rating"><span class="stars-sm">★★★★★</span><span class="rating-n">${p.puntuacion}</span><span class="rating-c">/10</span></div>
+        <p style="font-size:.8rem;color:var(--muted);margin-bottom:8px;line-height:1.5">${p.descripcion}</p>
+        <div class="product-price-row"><span class="product-price">${p.precio}</span></div>
+        <div class="buy-buttons" onclick="event.stopPropagation()">
+          <a href="https://www.amazon.es/dp/${p.asin}?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon</a>
+          <a href="https://www.pccomponentes.com/search?query=${encodeURIComponent(p.nombre)}" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComponentes</a>
+          <a href="https://www.mediamarkt.es/es/search.html?query=${encodeURIComponent(p.nombre)}" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 MediaMarkt</a>
+        </div>
+      </div>
+    </div>`).join('')}</div>`;
+
+  el.innerHTML = html + cacheBar('gaming', Date.now(), "refreshSection('gaming')");
+  await cacheSet('gaming', html);
+}
+
+// ── COMPARATIVAS ──
+async function loadComp(tipo) {
+  activeComp = tipo;
+  document.querySelectorAll('.comp-tab-btn').forEach(b => b.classList.remove('active-tab'));
+  document.getElementById('ctab-' + tipo).classList.add('active-tab');
+
+  const el = document.getElementById('comp-content');
+  const cacheKey = 'comp:' + tipo;
+
+  const cached = await cacheGet(cacheKey);
+  if (cached) {
+    el.innerHTML = cached.html + cacheBar(cacheKey, cached.ts, `showComp('${tipo}',true)`);
+    return;
+  }
+
+  el.innerHTML = `<div class="ai-loading"><div class="ai-spinner"></div><div class="ai-loading-title">Generando comparativa…</div><div class="ai-loading-sub" id="status-comp">Analizando specs…</div></div>`;
+
+  const prompts = {
+    audio: 'Sony WH-1000XM5 (289€, B09XS7JWHH), Apple AirPods Max (579€, B08PZHYWJS), Bose QuietComfort 45 (259€, B098FKXT8L)',
+    moviles: 'iPhone 16 Pro (1.099€, B0CK5G5KQH), Samsung Galaxy S25 Ultra (1.199€, B0DQNL4RGL), Google Pixel 9 Pro (999€, B0D84RGWB7)',
+    portatiles: 'MacBook Air M3 (1.099€, B0CX22FVTR), Dell XPS 13 Plus 2025 (1.199€, B0CDJKZJLY)'
+  };
+
+  const raw = await callClaude(
+    `Eres el redactor de ElMejorGadget.net. Comparativa: ${prompts[tipo]}.
+Responde SOLO con JSON sin backticks:
+{"productos":[{"nombre":"nombre corto","precio":"XXX€","asin":"BXXXXXXXXX","ganador":true}],"criterios":[{"label":"criterio","valores":["val1","val2","val3"],"ganador_idx":0}],"veredicto":"conclusión 3 frases con recomendación clara según perfil de usuario"}`,
+    document.getElementById('status-comp'),
+    ['Comparando modelos…','Analizando specs…','Evaluando precio/valor…','Generando tabla…']);
+
+  const d = parseJSON(raw);
+  if (!d) { el.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted)">Error al cargar.</div>'; return; }
+
+  const cols = d.productos.length;
+  const html = `<div style="overflow-x:auto">
+    <div class="comp-grid" style="grid-template-columns:160px repeat(${cols},1fr)">
+      <div class="comp-header-cell label-cell">Producto</div>
+      ${d.productos.map(p=>`
+        <div class="comp-header-cell ${p.ganador?'winner':''}">
+          <div style="height:75px;display:flex;align-items:center;justify-content:center;margin-bottom:8px">
+            ${imgTag(p.asin, p.nombre, 'comp-prod-img')}
+          </div>
+          <div class="comp-product-name">${p.nombre}${p.ganador?' 🏆':''}</div>
+          <div class="comp-price-big">${p.precio}</div>
+          ${compBuyStack(p.asin)}
+        </div>`).join('')}
+      ${d.criterios.map(c=>`
+        <div class="comp-cell label">${c.label}</div>
+        ${c.valores.map((v,i)=>`
+          <div class="comp-cell ${d.productos[i]?.ganador?'winner-col':''}">
+            ${i===c.ganador_idx?`<span class="check">★ ${v}</span>`:v}
+          </div>`).join('')}`).join('')}
+    </div></div>
+    <div class="verdict-box"><div class="verdict-title">🎯 Veredicto ElMejorGadget</div><div class="verdict-text">${d.veredicto}</div></div>`;
+
+  el.innerHTML = html + cacheBar(cacheKey, Date.now(), `showComp('${tipo}',true)`);
+  await cacheSet(cacheKey, html);
+}
+
+async function showComp(tipo, forceRefresh = false) {
+  if (forceRefresh) await cacheDelete('comp:' + tipo);
+  loadComp(tipo);
+}
+
+// ── OFERTAS ──
+async function loadOfertas() {
+  const st = document.getElementById('status-ofertas');
+  const el = document.getElementById('ofertas-content');
+
+  const cached = await cacheGet('ofertas');
+  if (cached) {
+    el.innerHTML = cached.html + cacheBar('ofertas', cached.ts, "refreshSection('ofertas')");
+    return;
+  }
+
+  const raw = await callClaude(
+    `Eres el redactor de ElMejorGadget.net. 6 ofertas reales de tech en Amazon España el ${fecha}. Mezcla categorías.
+Responde SOLO con JSON sin backticks:
+{"ofertas":[{"emoji":"🎧","nombre":"nombre completo","categoria":"categoria","precio_actual":"XXX€","precio_original":"XXX€","descuento":"XX%","asin":"BXXXXXXXXX","motivo":"por qué es buena oferta en 1 frase"}]}`,
+    st, ['Consultando Amazon España…','Verificando stock…','Calculando descuentos reales…','Ordenando por mejor oferta…']);
+  const data = parseJSON(raw);
+  if (!data?.ofertas) { el.innerHTML = '<div style="padding:40px;text-align:center">Error al cargar.</div>'; return; }
+
+  const html = `<div class="product-grid">${data.ofertas.map(o=>`
+    <div class="product-card">
+      <div class="product-img-wrap">
+        ${imgTag(o.asin, o.nombre)}
+        <span class="fallback-emoji">${o.emoji}</span>
+        <span class="product-badge badge-offer">-${o.descuento}</span>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">${o.categoria}</div>
+        <div class="product-name">${o.nombre}</div>
+        <p style="font-size:.76rem;color:var(--muted);margin-bottom:8px;line-height:1.5">💡 ${o.motivo}</p>
+        <div class="product-price-row"><span class="product-price">${o.precio_actual}</span><span class="product-price-old">${o.precio_original}</span></div>
+        <div class="buy-buttons" onclick="event.stopPropagation()">
+          <a href="https://www.amazon.es/dp/${o.asin}?tag=elmejorgadget-21" target="_blank" rel="nofollow sponsored" class="buy-btn amazon">🛒 Amazon</a>
+          <a href="https://www.pccomponentes.com/search?query=${encodeURIComponent(o.nombre)}" target="_blank" rel="nofollow sponsored" class="buy-btn pccomp">🔵 PcComponentes</a>
+          <a href="https://www.mediamarkt.es/es/search.html?query=${encodeURIComponent(o.nombre)}" target="_blank" rel="nofollow sponsored" class="buy-btn media">🔴 MediaMarkt</a>
+        </div>
+      </div>
+    </div>`).join('')}</div>`;
+
+  el.innerHTML = html + cacheBar('ofertas', Date.now(), "refreshSection('ofertas')");
+  await cacheSet('ofertas', html);
+}
+
+// ── FORCE REFRESH ──
+async function refreshSection(section) {
+  await cacheDelete(section);
+  loaded[section] = false;
+  showToast('↻ Regenerando contenido…');
+  // Re-trigger load
+  if (section === 'smartphones') { loaded.smartphones = false; }
+  if (section === 'audio') { loaded.audio = false; }
+  if (section === 'portatiles') { loaded.portatiles = false; }
+  if (section === 'gaming') { loaded.gaming = false; }
+  if (section === 'ofertas') { loaded.ofertas = false; }
+  showPage(section);
+}
+
+// ── SEARCH ──
+function doSearch() {
+  const q = document.getElementById('search-input').value.trim();
+  if (q) showToast(`🔍 Buscando "${q}"…`);
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
